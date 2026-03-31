@@ -13,7 +13,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; padding: 32px 20px 60px; }
-
+ 
   /* Header */
   .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
   .logo { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; letter-spacing: 3px; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -23,55 +23,55 @@
   .week-btn:hover { background: var(--accent); border-color: var(--accent); }
   .new-week-btn { background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; color: white; padding: 8px 18px; border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase; transition: opacity 0.15s, transform 0.15s; }
   .new-week-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-
+ 
   /* Overall Progress */
   .overall-progress { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 28px; margin-bottom: 28px; display: flex; align-items: center; gap: 24px; }
   .progress-text { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 2px; color: var(--muted); white-space: nowrap; }
   .progress-bar-wrap { flex: 1; height: 8px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
   .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 99px; transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); width: 0%; }
   .progress-count { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--green); white-space: nowrap; min-width: 70px; text-align: right; }
-
+ 
   /* Days Grid */
   .days-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 28px; }
   @media (max-width: 780px) { .days-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 480px) { .days-grid { grid-template-columns: repeat(2, 1fr); } }
-
+ 
   .day-col { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 12px; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.2s, background 0.2s; position: relative; min-height: 120px; }
   .day-col.today { border-color: var(--accent); }
   .day-col.today::before { content: ''; position: absolute; inset: 0; border-radius: 14px; background: linear-gradient(135deg, rgba(79,142,247,0.06), rgba(124,90,245,0.04)); pointer-events: none; }
   .day-col.drag-over { border-color: var(--green) !important; background: rgba(62,207,142,0.06); }
   .day-col.day-complete { border-color: var(--gold) !important; }
-
+ 
   .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
   .day-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; letter-spacing: 2px; color: var(--muted); }
   .day-col.today .day-name { color: var(--accent); }
   .day-col.day-complete .day-name { color: var(--gold); }
   .day-badge { font-size: 0.65rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; background: var(--accent); color: white; padding: 2px 6px; border-radius: 4px; }
   .day-progress { font-size: 0.7rem; color: var(--muted); font-weight: 500; margin-bottom: 2px; }
-
+ 
   /* Mini bar — glows gold when full */
   .day-mini-bar-wrap { margin-top: auto; padding-top: 10px; height: 6px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
-  .day-mini-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--accent), var(--green)); transition: width 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s; }
+  .day-mini-bar-fill { height: 100%; width: 0%; border-radius: 99px; background: linear-gradient(90deg, var(--accent), var(--green)); transition: width 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s; }
   .day-mini-bar-fill.full { background: linear-gradient(90deg, var(--gold), #ffb347); box-shadow: 0 0 8px rgba(245,200,66,0.6); }
-
+ 
   /* Tasks */
   .task-item { display: flex; align-items: flex-start; gap: 6px; padding: 6px 8px; border-radius: 8px; border: 1px solid transparent; transition: background 0.15s, border-color 0.15s, opacity 0.2s; user-select: none; position: relative; cursor: default; }
   .task-item:hover { background: var(--surface2); border-color: var(--border); }
   .task-item.done { opacity: 0.45; }
   .task-item.dragging { opacity: 0.2; }
-
+ 
   .task-checkbox { width: 18px; height: 18px; border-radius: 5px; border: 2px solid var(--border); background: transparent; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); margin-top: 1px; position: relative; overflow: hidden; cursor: pointer; }
   .task-item.done .task-checkbox { background: var(--green); border-color: var(--green); transform: scale(1.15); }
   .task-item.done .task-checkbox::after { content: '✓'; font-size: 11px; color: #0d0f14; font-weight: 900; }
-
+ 
   .burst { position: fixed; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; animation: burst-out 0.5s ease-out forwards; z-index: 9998; }
   @keyframes burst-out { 0% { transform: translate(0,0) scale(1); opacity: 1; } 100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; } }
-
+ 
   /* Inline edit */
   .task-label { font-size: 0.82rem; font-weight: 400; color: var(--text); line-height: 1.4; transition: all 0.25s; flex: 1; min-width: 0; word-break: break-word; }
   .task-item.done .task-label { text-decoration: line-through; color: var(--muted); }
   .task-edit-input { flex: 1; background: var(--surface); border: 1px solid var(--accent); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; padding: 2px 6px; border-radius: 5px; outline: none; min-width: 0; }
-
+ 
   /* Action buttons */
   .task-actions { display: flex; align-items: center; gap: 1px; opacity: 0; transition: opacity 0.15s; flex-shrink: 0; }
   .task-item:hover .task-actions { opacity: 1; }
@@ -81,7 +81,7 @@
   .task-action-btn.edit-btn:hover { color: var(--accent); }
   .task-action-btn.up-btn:hover, .task-action-btn.down-btn:hover { color: var(--accent2); }
   .task-action-btn.del-btn:hover { color: var(--red); }
-
+ 
   /* Add task */
   .add-task-wrap { display: flex; gap: 6px; margin-top: 4px; }
   .add-task-input { flex: 1; background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; padding: 5px 8px; border-radius: 6px; outline: none; transition: border-color 0.15s; }
@@ -89,7 +89,7 @@
   .add-task-input::placeholder { color: var(--muted); }
   .add-task-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--accent); width: 26px; height: 26px; border-radius: 6px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; flex-shrink: 0; }
   .add-task-btn:hover { background: var(--accent); color: white; }
-
+ 
   /* History */
   .history-section { margin-top: 10px; }
   .history-title { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 3px; color: var(--muted); margin-bottom: 12px; }
@@ -105,16 +105,16 @@
   .history-pct { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); }
   .delete-week-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.72rem; font-family: 'DM Sans', sans-serif; letter-spacing: 1px; text-transform: uppercase; transition: all 0.15s; white-space: nowrap; flex-shrink: 0; }
   .delete-week-btn:hover { border-color: var(--red); color: var(--red); background: rgba(245,90,90,0.08); }
-
+ 
   /* Day complete flash overlay */
   .day-flash { position: absolute; inset: 0; border-radius: 14px; pointer-events: none; opacity: 0; background: radial-gradient(circle, rgba(245,200,66,0.18) 0%, transparent 70%); animation: day-flash-anim 1.2s ease-out forwards; z-index: 2; }
   @keyframes day-flash-anim { 0% { opacity: 0; } 20% { opacity: 1; } 100% { opacity: 0; } }
-
+ 
   /* Toast */
   .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--green); color: #0d0f14; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; padding: 10px 22px; border-radius: 99px; opacity: 0; transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; z-index: 999; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
-
+ 
   /* Modals */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
   .modal-overlay.open { display: flex; }
@@ -130,10 +130,10 @@
 </style>
 </head>
 <body>
-
+ 
 <canvas id="confetti-canvas"></canvas>
 <div class="toast" id="toast"></div>
-
+ 
 <!-- New Week Modal -->
 <div class="modal-overlay" id="newWeekModal">
   <div class="modal">
@@ -146,7 +146,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- Delete Week Modal -->
 <div class="modal-overlay" id="deleteWeekModal">
   <div class="modal">
@@ -158,7 +158,7 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="header">
   <div class="logo">TASK TRACKER</div>
   <div class="week-controls">
@@ -168,20 +168,20 @@
     <button class="new-week-btn" onclick="openNewWeekModal()">+ NEW WEEK</button>
   </div>
 </div>
-
+ 
 <div class="overall-progress">
   <div class="progress-text">WEEKLY PROGRESS</div>
   <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
   <div class="progress-count" id="progressCount">0 / 0</div>
 </div>
-
+ 
 <div class="days-grid" id="daysGrid"></div>
 <div class="history-section" id="historySection"></div>
-
+ 
 <script>
 const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
 const BURST_COLORS = ['#3ecf8e','#4f8ef7','#f5c842','#f55a5a','#7c5af5'];
-
+ 
 let data = JSON.parse(localStorage.getItem('taskTracker_v2') || 'null');
 if (!data) {
   const old = localStorage.getItem('taskTracker');
@@ -190,55 +190,55 @@ if (!data) {
   }
   if (!data) data = { currentWeekIndex: 0, weeks: [{ id: 0, name: getDefaultWeekName(), days: DAYS.map(d=>({name:d,tasks:[]})) }] };
 }
-
+ 
 let viewingWeekIndex = data.currentWeekIndex;
 let deleteTargetIndex = null;
 let dragSrcDay = null, dragSrcTask = null;
 // Track which days have already fired celebration this render cycle
 const celebratedDays = new Set();
-
+ 
 function getDefaultWeekName() {
   const now = new Date();
   return now.toLocaleString('default', { month: 'short', day: 'numeric' });
 }
-
+ 
 function save() { localStorage.setItem('taskTracker_v2', JSON.stringify(data)); }
 function currentWeek() { return data.weeks[viewingWeekIndex]; }
 function isCurrentWeek() { return viewingWeekIndex === data.currentWeekIndex; }
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
+ 
 // ── RENDER ───────────────────────────────────────────────────────────
 function render() {
   const week = currentWeek();
   document.getElementById('weekLabel').textContent = week.name.toUpperCase();
   document.getElementById('prevBtn').disabled = viewingWeekIndex === 0;
   document.getElementById('nextBtn').disabled = viewingWeekIndex === data.weeks.length - 1;
-
+ 
   let total = 0, done = 0;
   week.days.forEach(d => { total += d.tasks.length; done += d.tasks.filter(t=>t.done).length; });
   const pct = total === 0 ? 0 : Math.round(done/total*100);
   document.getElementById('progressFill').style.width = pct + '%';
   document.getElementById('progressCount').textContent = `${done} / ${total}`;
-
+ 
   const grid = document.getElementById('daysGrid');
   grid.innerHTML = '';
   const todayName = new Date().toLocaleDateString('en-US',{weekday:'long'});
-
+ 
   week.days.forEach((day, di) => {
     const isToday = isCurrentWeek() && day.name === todayName;
     const dayDone = day.tasks.filter(t=>t.done).length;
     const dayTotal = day.tasks.length;
     const dayPct = dayTotal === 0 ? 0 : Math.round(dayDone/dayTotal*100);
     const dayComplete = dayTotal > 0 && dayDone === dayTotal;
-
+ 
     const col = document.createElement('div');
     col.className = 'day-col' + (isToday ? ' today' : '') + (dayComplete ? ' day-complete' : '');
-
+ 
     // Cross-day drag events
     col.addEventListener('dragover', e => { e.preventDefault(); col.classList.add('drag-over'); });
     col.addEventListener('dragleave', e => { if (!col.contains(e.relatedTarget)) col.classList.remove('drag-over'); });
     col.addEventListener('drop', e => { e.preventDefault(); col.classList.remove('drag-over'); dropTask(di); });
-
+ 
     col.innerHTML = `
       <div class="day-header">
         <div class="day-name">${day.name.slice(0,3).toUpperCase()}</div>
@@ -246,15 +246,15 @@ function render() {
       </div>
       <div class="day-progress">${dayDone}/${dayTotal} done</div>
     `;
-
+ 
     day.tasks.forEach((task, ti) => {
       const item = document.createElement('div');
       item.className = 'task-item' + (task.done ? ' done' : '');
       item.draggable = isCurrentWeek();
-
+ 
       const upDisabled = ti === 0;
       const downDisabled = ti === day.tasks.length - 1;
-
+ 
       item.innerHTML = `
         <div class="task-checkbox"></div>
         <div class="task-label">${esc(task.text)}</div>
@@ -268,17 +268,17 @@ function render() {
           <button class="task-action-btn del-btn" title="Delete" onclick="deleteTask(event,${di},${ti})">✕</button>
         </div>
       `;
-
+ 
       item.querySelector('.task-checkbox').addEventListener('click', e => { e.stopPropagation(); toggleTask(di, ti, item, col); });
-
+ 
       if (isCurrentWeek()) {
         item.addEventListener('dragstart', e => { dragSrcDay = di; dragSrcTask = ti; setTimeout(() => item.classList.add('dragging'), 0); e.dataTransfer.effectAllowed = 'move'; });
         item.addEventListener('dragend', () => item.classList.remove('dragging'));
       }
-
+ 
       col.appendChild(item);
     });
-
+ 
     if (isCurrentWeek()) {
       const addWrap = document.createElement('div');
       addWrap.className = 'add-task-wrap';
@@ -286,22 +286,19 @@ function render() {
       addWrap.querySelector('input').addEventListener('keydown', e => { if (e.key==='Enter') addTask(di); });
       col.appendChild(addWrap);
     }
-
+ 
     // Mini bar
     const miniBar = document.createElement('div');
     miniBar.className = 'day-mini-bar-wrap';
-    const fill = document.createElement('div');
-    fill.className = 'day-mini-bar-fill' + (dayComplete ? ' full' : '');
-    fill.style.width = dayPct + '%';
-    miniBar.appendChild(fill);
+    miniBar.innerHTML = `<div class="day-mini-bar-fill${dayComplete ? ' full' : ''}" style="width:${dayPct}%"></div>`;
     col.appendChild(miniBar);
-
+ 
     grid.appendChild(col);
   });
-
+ 
   renderHistory();
 }
-
+ 
 // ── TOGGLE ───────────────────────────────────────────────────────────
 function toggleTask(di, ti, el, colEl) {
   const week = data.weeks[viewingWeekIndex];
@@ -309,12 +306,12 @@ function toggleTask(di, ti, el, colEl) {
   const wasNotDone = !task.done;
   task.done = !task.done;
   save();
-
+ 
   if (task.done) {
     el.classList.add('done');
     spawnBurst(el);
     showToast('✓ Task complete!');
-
+ 
     // Check if entire day is now done
     const day = week.days[di];
     const dayDone = day.tasks.filter(t=>t.done).length;
@@ -322,21 +319,21 @@ function toggleTask(di, ti, el, colEl) {
     if (dayTotal > 0 && dayDone === dayTotal && wasNotDone) {
       celebrateDay(colEl, di);
     }
-
+ 
     checkAllDone();
   } else {
     el.classList.remove('done');
   }
   render();
 }
-
+ 
 function celebrateDay(colEl, di) {
   // Flash overlay on the column
   const flash = document.createElement('div');
   flash.className = 'day-flash';
   colEl.appendChild(flash);
   setTimeout(() => flash.remove(), 1300);
-
+ 
   // Mini burst from bar area
   const bar = colEl.querySelector('.day-mini-bar-wrap');
   if (bar) {
@@ -350,10 +347,10 @@ function celebrateDay(colEl, di) {
       setTimeout(()=>p.remove(), 700);
     }
   }
-
+ 
   showToast('🌟 Day complete!');
 }
-
+ 
 function spawnBurst(el) {
   const cb = el.querySelector('.task-checkbox');
   const r = cb.getBoundingClientRect();
@@ -367,14 +364,14 @@ function spawnBurst(el) {
     setTimeout(()=>p.remove(), 600);
   }
 }
-
+ 
 function checkAllDone() {
   const w = currentWeek();
   const total = w.days.reduce((a,d)=>a+d.tasks.length,0);
   const done = w.days.reduce((a,d)=>a+d.tasks.filter(t=>t.done).length,0);
   if (total > 0 && done === total) { setTimeout(launchConfetti, 400); setTimeout(()=>showToast('🏆 Week complete! Incredible work!'), 600); }
 }
-
+ 
 function launchConfetti() {
   const canvas = document.getElementById('confetti-canvas'), ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth; canvas.height = window.innerHeight;
@@ -387,7 +384,7 @@ function launchConfetti() {
   })();
   setTimeout(()=>{ cancelAnimationFrame(frame); ctx.clearRect(0,0,canvas.width,canvas.height); },4500);
 }
-
+ 
 // ── INLINE EDIT ──────────────────────────────────────────────────────
 function startEdit(e, di, ti) {
   e.stopPropagation();
@@ -398,7 +395,7 @@ function startEdit(e, di, ti) {
   items.forEach(item => {
     if (parseInt(item.dataset.di) === di && parseInt(item.dataset.ti) === ti) targetItem = item;
   });
-
+ 
   // Rebuild using indices stored in action buttons
   const allItems = document.querySelectorAll(`[data-di="${di}"][data-ti="${ti}"]`);
   // Fallback: find by scanning all .task-item children of the right day col
@@ -408,17 +405,17 @@ function startEdit(e, di, ti) {
   const taskItems = col.querySelectorAll('.task-item');
   const item = taskItems[ti];
   if (!item) return;
-
+ 
   const label = item.querySelector('.task-label');
   if (!label) return;
-
+ 
   const input = document.createElement('input');
   input.className = 'task-edit-input';
   input.value = task.text;
   label.replaceWith(input);
   input.focus();
   input.select();
-
+ 
   function commitEdit() {
     const newText = input.value.trim();
     if (newText && newText !== task.text) {
@@ -427,14 +424,14 @@ function startEdit(e, di, ti) {
     }
     render();
   }
-
+ 
   input.addEventListener('blur', commitEdit);
   input.addEventListener('keydown', e => {
     if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
     if (e.key === 'Escape') { input.value = task.text; input.blur(); }
   });
 }
-
+ 
 // ── MOVE UP/DOWN WITHIN DAY ──────────────────────────────────────────
 function moveTask(e, di, ti, dir) {
   e.stopPropagation();
@@ -444,7 +441,7 @@ function moveTask(e, di, ti, dir) {
   [tasks[ti], tasks[newTi]] = [tasks[newTi], tasks[ti]];
   save(); render();
 }
-
+ 
 // ── ADD / DELETE ─────────────────────────────────────────────────────
 function addTask(di) {
   const inp = document.getElementById(`inp-${di}`);
@@ -453,13 +450,13 @@ function addTask(di) {
   save(); render();
   setTimeout(()=>{ const n=document.getElementById(`inp-${di}`); if(n) n.focus(); },10);
 }
-
+ 
 function deleteTask(e, di, ti) {
   e.stopPropagation();
   data.weeks[viewingWeekIndex].days[di].tasks.splice(ti,1);
   save(); render();
 }
-
+ 
 // ── CROSS-DAY DRAG & DROP ────────────────────────────────────────────
 function dropTask(targetDi) {
   if (dragSrcDay===null || dragSrcTask===null) return;
@@ -470,7 +467,7 @@ function dropTask(targetDi) {
   dragSrcDay=null; dragSrcTask=null;
   save(); render(); showToast('↔ Task moved!');
 }
-
+ 
 // ── WEEK MANAGEMENT ──────────────────────────────────────────────────
 function openNewWeekModal() {
   const now = new Date(), end = new Date(now);
@@ -480,7 +477,7 @@ function openNewWeekModal() {
   document.getElementById('newWeekModal').classList.add('open');
   setTimeout(()=>document.getElementById('newWeekName').select(),100);
 }
-
+ 
 function confirmNewWeek() {
   const name = document.getElementById('newWeekName').value.trim() || getDefaultWeekName();
   data.weeks.push({ id: Date.now(), name, days: DAYS.map(d=>({name:d,tasks:[]})) });
@@ -488,14 +485,14 @@ function confirmNewWeek() {
   viewingWeekIndex = data.currentWeekIndex;
   save(); closeModal('newWeekModal'); render(); showToast('🗓 New week started!');
 }
-
+ 
 function openDeleteWeekModal(e, idx) {
   e.stopPropagation();
   deleteTargetIndex = idx;
   document.getElementById('deleteWeekMsg').textContent = `Delete "${data.weeks[idx].name}"? This cannot be undone.`;
   document.getElementById('deleteWeekModal').classList.add('open');
 }
-
+ 
 function confirmDeleteWeek() {
   if (deleteTargetIndex === null) return;
   const idx = deleteTargetIndex;
@@ -512,10 +509,10 @@ function confirmDeleteWeek() {
   deleteTargetIndex = null;
   save(); closeModal('deleteWeekModal'); render(); showToast('🗑 Week deleted');
 }
-
+ 
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 function navigateWeek(dir) { viewingWeekIndex = Math.max(0, Math.min(data.weeks.length-1, viewingWeekIndex+dir)); render(); }
-
+ 
 // ── HISTORY ──────────────────────────────────────────────────────────
 function renderHistory() {
   const section = document.getElementById('historySection');
@@ -545,7 +542,7 @@ function renderHistory() {
     list.appendChild(card);
   });
 }
-
+ 
 // ── TOAST ────────────────────────────────────────────────────────────
 let toastTimer;
 function showToast(msg) {
@@ -554,7 +551,7 @@ function showToast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(()=>t.classList.remove('show'), 2400);
 }
-
+ 
 render();
 </script>
 </body>
